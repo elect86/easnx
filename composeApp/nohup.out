@@ -123,3 +123,16 @@ DNS Server          : 149.220.16.11
 Secondary DNS Server: 149.220.4.2
 DNS Suffix          : fz-rossendorf.de,hzdr.de,ad.fz-rossendorf.de,vkta.de
 Timeout             : 10 hours 
+Check Point's Linux SNX
+build 800010003
+Please enter your password:
+
+SNX - connected.
+
+Session parameters:
+===================
+Office Mode IP      : 149.220.150.5
+DNS Server          : 149.220.16.11
+Secondary DNS Server: 149.220.4.2
+DNS Suffix          : fz-rossendorf.de,hzdr.de,ad.fz-rossendorf.de,vkta.de
+Timeout             : 10 hours 

@@ -13,6 +13,7 @@ import java.io.File
 import java.nio.file.Paths
 
 val iconPath = File("./vpn-network-icon.webp").absolutePath
+val user = System.getenv("HZDR_USER")
 val Process.output
     get() = inputStream.readAllBytes().decodeToString()
 val totp
@@ -33,7 +34,7 @@ fun main() {
                          notify(alreadyRunning)
                          snx.destroyForcibly()
                      } else {
-                         ProcessBuilder("byobu-tmux", "new-session", "-d", "echo $pwd$totp | nohup snx -s cp.hzdr.de -u barbie15").start()
+                         ProcessBuilder("byobu-tmux", "new-session", "-d", "echo $pwd$totp | nohup snx -s cp.hzdr.de -u $user").start()
                          val output = ProcessBuilder("snx").start().output
                          val connected = output == alreadyRunning || output == "Failed to init terminal!\n"
                          //                     println(output)
