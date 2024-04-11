@@ -27,6 +27,9 @@ To get a new the `HZDR_SECRET_KEY` you must destroy the current token and create
 
 You will see a tray icon where, other than "connect" and "disconnect", which are pretty self explanatory, you have also "copy TOTP", which will copy in your clipboard the current Hzdr TOTP, useful for logins where requested
 
+## credits:
+
+- [Zoff](https://github.com/zoff99) with his [jni_notifications](https://github.com/zoff99/jni_notifications) for native nice-looking notifications
 
 ### original:
 
