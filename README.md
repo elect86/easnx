@@ -22,8 +22,10 @@ To get a new the `HZDR_SECRET_KEY` you must destroy the current token and create
 - don't close the page yet! You must save this new one on your phone auth app as well
 
 ## run it
-
-`./gradlew run`
+```bash
+cd easnx/
+./gradlew run
+```
 
 You will see a tray icon where, other than "connect" and "disconnect", which are pretty self explanatory, you have also "copy TOTP", which will copy in your clipboard the current Hzdr TOTP, useful for logins where requested
 
