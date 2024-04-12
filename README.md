@@ -27,6 +27,10 @@ To get a new the `HZDR_SECRET_KEY` you must destroy the current token and create
 
 You will see a tray icon where, other than "connect" and "disconnect", which are pretty self explanatory, you have also "copy TOTP", which will copy in your clipboard the current Hzdr TOTP, useful for logins where requested
 
+The connection status will be visible by the tray icon color, green means it's connected, red disconnected.
+
+Note: `snx` experiences a segmentation fault sometimes. This happens when you don't get the green color after you clicked on "connect". In this case you have to reboot, I still didn't find a better solution for the meanwhile
+
 ## credits:
 
 - [Zoff](https://github.com/zoff99) with his [jni_notifications](https://github.com/zoff99/jni_notifications) for native nice-looking notifications
