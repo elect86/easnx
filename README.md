@@ -29,7 +29,7 @@ cd easnx/
 
 You will see a tray icon where, other than "connect" and "disconnect", which are pretty self explanatory, you have also "copy TOTP", which will copy in your clipboard the current Hzdr TOTP, useful for logins where requested
 
-The connection status will be visible by the tray icon color, green means it's connected, red disconnected.
+The connection status will be visible by the tray icon color, green means it's connected, red disconnected. And it's live, it's gonna ping every second the secondary DNS, you can rely on that to get a quick verification of your VPN status
 
 Note: `snx` experiences a segmentation fault sometimes. This happens when you don't get the green color after you clicked on "connect". In this case you have to reboot, I still didn't find a better solution for the meanwhile
 
