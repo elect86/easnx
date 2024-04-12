@@ -4,7 +4,7 @@ A little util to easier life for Hzdr linux users
 
 ## configure
 
-Save in your `.profile` (or everywhere else in order to have them as environment variables) the following:
+Save in your `~/.profile` (or everywhere else in order to have them as environment variables) the following:
 
 ```
 HZDR_USER="myUser"; export HZDR_USER
