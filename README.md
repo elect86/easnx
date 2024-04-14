@@ -33,6 +33,10 @@ The connection status will be visible by the tray icon color, green means it's c
 
 Note: `snx` experiences a segmentation fault sometimes. This happens when you don't get the green color after you clicked on "connect". In this case you have to reboot, I still didn't find a better solution for the meanwhile
 
+## Known issues:
+
+Tray menus don't work on Fedora 39 (KDE 5.115.0, Qt 5.15.12 with Wayland)
+
 ## credits:
 
 - [Zoff](https://github.com/zoff99) with his [jni_notifications](https://github.com/zoff99/jni_notifications) for native nice-looking notifications
