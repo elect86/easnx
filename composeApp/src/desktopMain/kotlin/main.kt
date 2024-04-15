@@ -28,11 +28,13 @@ const val alreadyRunning = "Another session of SNX is already running, aborting.
 fun notify(message: String, title: String = "snx") = jninotifications_notify("snx", title, message, iconPath)
 
 fun main() {
+//    Desktop.getDesktop().browse(URI("https://www.hzdr.de/"))
     val pingPeriodMs = 1_000
     check(isTraySupported)
 
     val pwd = System.getenv("HZDR_PASSWORD")
     jninotifications_loadjni(Paths.get("").toAbsolutePath().toString())
+//    System.loadLibrary("libjni_notifications.so")
     application {
 
         var time = 0L
@@ -56,10 +58,7 @@ fun main() {
                          notify(alreadyRunning)
                          snx.destroyForcibly()
                      } else {
-                         ProcessBuilder("byobu-tmux", "new-session", "-d", "echo $pwd$totp | nohup snx -s cp.hzdr.de -u $user").start()
-                         val output = ProcessBuilder("snx").start().output
-//                         val connected = output == alreadyRunning || output == "Failed to init terminal!\n"
-                         println(output)
+                         ProcessBuilder("byobu-tmux", "new-session", "-d", "echo $pwd$totp | nohup snx -s cp.hzdr.de -u $user > snxOuput 2>&1").start()
                          notify("trying to connect..")
                      }
                  })
