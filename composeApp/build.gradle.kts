@@ -1,10 +1,13 @@
+import org.example.Arch
+import org.example.OS
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
 
     alias(libs.plugins.jetbrainsCompose)
-    id("com.google.osdetector") version "1.7.3"
+
+    id("native-support")
 }
 
 repositories {
@@ -31,7 +34,7 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation("commons-codec:commons-codec:1.10")
-            implementation("com.zoffcc.applications:jni_notifications:0.0.2")
+            implementation("com.zoffcc.applications:jni_notifications:0.0.3")
         }
     }
 }
@@ -48,27 +51,27 @@ compose.desktop {
     }
 }
 
-configurations.commonMainRuntimeOnly {
-    attributes {
-        // select a platform, will fail to compose a runtime classpath if non is selected
-        attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named(OperatingSystemFamily.LINUX)) // or MACOS or LINUX
-        attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named("x86-64"))   // or x86-64 or arm32 or arm64
-    }
-}
-configurations["desktopRuntimeClasspath"].apply {
-    this.dependencies.forEach { println("[dependencies] $it") }
-    this.allArtifacts.forEach { println("[allArtifacts] $it") }
-    this.allDependencies.forEach { println("[allDependencies] $it") }
-    println("isCanBeResolved $isCanBeResolved, isCanBeConsumed $isCanBeConsumed")
-}
-configurations["desktopRuntimeClasspath"].attributes {
-    // select a platform, will fail to compose a runtime classpath if non is selected
-    attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named(OperatingSystemFamily.LINUX)) // or MACOS or LINUX
-    attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named("x86-64"))   // or x86-64 or arm32 or arm64
-}
-
-task("dependency") {
-    doFirst {
-        println(configurations["desktopRuntimeClasspath"].files.find { "jni" in it.name })
-    }
-}
+//configurations.configureEach {
+//    //    println("[$this] $attributes")
+//    if (name.endsWith("CompileClasspath") || name.endsWith("RuntimeClasspath"))
+//        attributes.getAttribute(Usage.USAGE_ATTRIBUTE)?.name?.let { usage ->
+//            if (usage == Usage.JAVA_API || usage == Usage.JAVA_RUNTIME)
+//                attributes {
+//                    // select a platform, will fail to compose a runtime classpath if none is selected
+//                    attribute(Attribute.of(OS::class.java), OS.linux) // or MACOS or LINUX
+//                    attribute(Attribute.of(Arch::class.java), Arch.x86_64)   // or x86-64 or arm32 or arm64
+//                }
+//        }
+//}
+//configurations.configureEach {
+////    println(this.name)
+//    attributes {
+//        if(getAttribute(Usage.USAGE_ATTRIBUTE)?.name == Usage.JAVA_RUNTIME
+//            && getAttribute(Category.CATEGORY_ATTRIBUTE)?.name == Category.LIBRARY
+////            && getAttribute(Bundling.BUNDLING_ATTRIBUTE)?.name == Bundling.EXTERNAL
+//            && getAttribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE)?.name == LibraryElements.JAR)
+//            println("found ${this@configureEach} $attributes")
+////        attribute(Attribute.of(OS::class.java), variantDefinition.os)
+////        attribute(Attribute.of(Arch::class.java), variantDefinition.arch)
+//    }
+//}
